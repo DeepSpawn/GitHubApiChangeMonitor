@@ -6,7 +6,6 @@ import os
 import sendgrid
 from fabric.api import task
 
-
 @task
 def check_github_dev_blog():
 	github_developer_url = "https://developer.github.com/changes.atom"
