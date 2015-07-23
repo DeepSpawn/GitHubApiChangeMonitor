@@ -33,7 +33,7 @@ def check_github_dev_blog():
 	    keywords = f.read().splitlines()
 
 	for item in feed["items"]:
-		if dateutil.parser.parse(item["date"]).date() < today:
+		if dateutil.parser.parse(item["date"]).date() == today:
 			if contains_keywords(keywords, item["summary"]):
 				sendEmail(item["link"])
 
