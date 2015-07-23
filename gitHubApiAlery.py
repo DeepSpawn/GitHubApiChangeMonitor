@@ -21,7 +21,7 @@ def check_github_dev_blog():
 		return False
 
 	def sendEmail ( link ):
-		sg = sendgrid.SendGridClient('YOUR_SENDGRID_USERNAME', 'YOUR_SENDGRID_PASSWORD')
+		sg = sendgrid.SendGridClient(os.environ.get(SENDGRID_USERNAME), os.environ.get(SENDGRID_PASSWORD))
 		message = sendgrid.Mail()
 		message.add_to('gtaylor@atlassian.com')
 		message.set_subject('GitHub developer blog alert')
