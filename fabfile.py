@@ -15,7 +15,7 @@ def check_github_dev_blog():
 		return False
 
 	def sendEmail ( link ):
-		console.log(link)
+		print link
 		sg = sendgrid.SendGridClient(os.environ.get('SENDGRID_USERNAME'), os.environ.get('SENDGRID_PASSWORD'))
 		message = sendgrid.Mail()
 		message.add_to(os.environ.get('EMAIL_ADDRESS'))
