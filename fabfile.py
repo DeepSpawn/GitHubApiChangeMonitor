@@ -20,7 +20,7 @@ def check_github_dev_blog():
 		return False
 
 	def sendEmail ( link ):
-		sg = sendgrid.SendGridClient(os.environ.get(SENDGRID_USERNAME), os.environ.get(SENDGRID_PASSWORD))
+		sg = sendgrid.SendGridClient(os.environ.get('SENDGRID_USERNAME'), os.environ.get('SENDGRID_PASSWORD'))
 		message = sendgrid.Mail()
 		message.add_to('gtaylor@atlassian.com')
 		message.set_subject('GitHub developer blog alert')
@@ -35,7 +35,7 @@ def check_github_dev_blog():
 	    keywords = f.read().splitlines()
 
 	for item in feed["items"]:
-		if dateutil.parser.parse(item["date"]).date() == today:
+		if dateutil.parser.parse(item["date"]).date() < today:
 			if contains_keywords(keywords, item["summary"]):
 				sendEmail(item["link"])
 
