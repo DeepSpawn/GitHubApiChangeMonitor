@@ -13,7 +13,7 @@ def check_github_dev_blog():
 
 	today = datetime.datetime.today().date()
 
-	def contains_eywords( keywords , text ):
+	def contains_keywords( keywords , text ):
 		for keyword in keywords:
 			if keyword in text:
 				return True
@@ -36,7 +36,7 @@ def check_github_dev_blog():
 
 	for item in feed["items"]:
 		if dateutil.parser.parse(item["date"]).date() < today:
-			if contain_keywords(keywords, item["summary"]):
+			if contains_keywords(keywords, item["summary"]):
 				sendEmail(item["link"])
 
 
